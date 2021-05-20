@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'views/head.html.twig' with {'title': 'Home'} %}
+
+<body>
+{% include 'views/header.html.twig' with {'selected': 'Home'} %}
+
+<div class="top-aligned">
+    <img class="slide-view" src="pictures/slider-image.jpg"/>
+    <main class="main-container">
+        <p class="long-text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, cumque. Ea, tenetur, quod blanditiis
+            eligendi
+            officiis voluptas nihil delectus itaque dicta expedita doloremque rerum. Error beatae eius explicabo rem
+            consequuntur temporibus vitae omnis,
+            quibusdam atque unde voluptatum itaque quis obcaecati incidunt corrupti provident officia sequi reiciendis
+            Quo
+            et
+            provident ab repellat velit pariatur optio recusandae placeat quis minus eius aperiam aliquid dolorum libero
+            sunt
+            quos non,
+            quod soluta officia. Ipsa pariatur dolor illum maxime, nam non. Sunt vel, rerum officia ipsa quos itaque
+            quam.
+            Blanditiis sapiente, et obcaecati cupiditate similique aperiam dolorem nam maxime dignissimos debitis iusto.
+            Excepturi, error autem.
+        </p>
+        <h1>Featured</h1>
+
+        {% include 'views/rooms-grid.html.twig' with {'rooms': rooms} %}
+        <a style="margin: 20px 0" href="src/rooms.php" class="button secondary">More <span
+                    class="fas fa-arrow-right icon"></span></a>
+    </main>
+
+    <div class="loader-wrapper">
+    <p class="welcome">Welcome to our group project</p>
+    <span class="loader"><span class="loader-inner"></span></span>
+    </div>
+    <div id="progressbar"></div>
+    <div id="scrollPath"></div>
+    {% include('views/maps.php.twig') %}
+</div>
+{% include('views/footer.html.twig') %}
+</body>
+</html>

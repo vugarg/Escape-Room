@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'views/head.html.twig' with {'title': 'Contact us'} %}
+
+<body>
+{% include'views/header.html.twig' with {'selected': 'Contact us'} %}
+<main class="main-container">
+    {% if errors != null %}
+        <p class="error-message">Unfortunately, we couldn't send your message! Some errors have ocurred:</p>
+        <ul>
+            {% for error in errors %}
+                <li class="error-message"><p class="error-message">{{ error }}</p></li>
+            {% endfor %}
+        </ul>
+        <a class="button primary" href="src/contact-us.php">Try again</a>
+    {% else %}
+        <h3 class="success-message">Your message has been successfully sent! We will contact you back withing 3 business days.</h3>
+            <a class="button primary" href="index.php">Home</a>
+    {% endif %}
+    <div id="progressbar"></div>
+    <div id="scrollPath"></div>
+</main>
+{{ include('views/footer.html.twig') }}
+</body>
+</html>

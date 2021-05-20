@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'views/head.html.twig' with {'title': 'Rooms'} %}
+<body>
+{% include 'views/header.html.twig' with {'selected': 'Rooms'} %}
+<main class="main-container">
+    {% include 'views/rooms-grid.html.twig' with {'rooms': rooms} %}
+</main>
+{% include 'views/footer.html.twig' %}
+<div id="progressbar"></div>
+    <div id="scrollPath"></div>
+</body>
+</html>

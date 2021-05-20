@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'views/head.html.twig' with {'title': 'Book'} %}
+<script src="scripts/book.js"></script>
+
+<body>
+{% include 'views/header.html.twig' %}
+<main class="main-container">
+    <form class="form" action="src/book.php" method="post">
+        <div class="form-item">
+            <label for="room-name">Room</label>
+            <select name="roomId" id="room-name" onchange="
+                    updateMaxPersons({{ rooms | json_encode() }})">
+                {% for room in rooms %}
+                    <option value="{{ room.id }}"
+                            {% if selectedRoomId == room.id %}selected{% endif %}
+                    >{{ room.title }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="form-item">
+            <label for="date-time">Date and time</label>
+            <select name="dateTime" id="date-time">
+                {% for date in dates %}
+                    <option value="{{ date }}"
+                            {% if selectedDate == date %}selected{% endif %}
+                    >{{ date }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="form-item">
+            <label for="num-persons">Persons</label>
+            <input type="number" max="{{ rooms[0].maxPersons }}" min="1" name="numPersons" id="num-persons"
+                   value={{ selectedNumPersons }}>
+        </div>
+        <div class="form-item">
+            {% if userNotLoggedIn %}
+                <p class="error-message">You must be logged in to make reservations!</p>
+                <a href="src/login.php" class="button primary">Log in</a>
+            {% elseif isUpdate %}
+                <button type="submit" class="button primary" name="update" value=true>Update reservation</button>
+            {% else %}
+                <button type="submit" class="button primary">Book</button>
+            {% endif %}
+        </div>
+        <input type="hidden" name="id" value={{ id }}>
+    </form>
+
+    <div id="progressbar"></div>
+    <div id="scrollPath"></div>
+</main>
+{{ include('views/footer.html.twig') }}
+</body>
+</html>

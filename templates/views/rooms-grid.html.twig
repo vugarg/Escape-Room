@@ -1,0 +1,31 @@
+<div class="grid-container">
+    {% for room in rooms %}
+        <div class="room-container">
+            <img class="room-image" src="pictures/{{ room.imagePath }}" alt="{{ room.title }}"/>
+            <h1 class="room-title">{{ room.title }}</h1>
+            <div class="room-hover-container">
+                {% set items = [
+                    {'label': 'Difficulty', 'icon': 'fa-trophy', 'value': room.difficulty },
+                    {'label': 'Max persons', 'icon': 'fa-user-friends', 'value': room.maxPersons },
+                    {'label': 'Duration', 'icon': 'fa-clock', 'value': room.duration },
+                    {'label': 'Location', 'icon': 'fa-map-marker-alt', 'value': room.location }
+                ] %}
+
+                <table class="room-specs">
+                    <tr>
+                        {% for item in items %}
+                            <th>{{ item.label }}</th>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        {% for item in items %}
+                            <td><span class="fas {{ item.icon}} icon"></span>{{ item.value }}</td>
+                        {% endfor %}
+                    </tr>
+                </table>
+                <p class="room-description long-text">{{ room.description }}</p>
+                <a class="button secondary" href="src/book.php?roomId={{ room.id }}">Book</a>
+            </div>
+        </div>
+    {% endfor %}
+</div>

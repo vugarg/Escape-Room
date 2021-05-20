@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'views/head.html.twig' with {'title': 'My account'} %}
+
+<body>
+{% include 'views/header.html.twig' with {'selected': 'My Account'} %}
+
+<main class="main-container">
+    <h1>Hello, {{ username }}!</h1>
+
+    {% if upcomingReservations %}
+        <h3>Upcoming reservations</h3>
+        <div class="framed">
+            {% include 'views/reservations.html.twig' with {'reservations': upcomingReservations, 'isUpdatable': true} %}
+        </div>
+    {% else %}
+        <h3>Oh no! You haven't made any reservations yet. You can book our rooms <a class="link" href="src/rooms.php">here</a>
+        </h3>
+    {% endif %}
+    {% if pastReservations %}
+        <h3>Past reservations</h3>
+        <div class="framed">
+            {% include 'views/reservations.html.twig' with {'reservations': pastReservations, 'isUpdatable': false} %}
+        </div>
+    {% endif %}
+
+    <form method="post" action="src/myaccount.php">
+        <button type="submit" class="button primary" name="log-out" value="true">Log out</button>
+    </form>
+    <div id="progressbar"></div>
+    <div id="scrollPath"></div>
+</main>
+{{ include('views/footer.html.twig') }}
+</body>
+</html>

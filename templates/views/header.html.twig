@@ -1,0 +1,21 @@
+<header class="header">
+    <a href="index.php"><img class="logo" src="pictures/logo.png" alt="logo"/></a>
+
+    {% set pages = [
+        {'path': 'index.php', 'title': 'Home'},
+        {'path': 'src/rooms.php', 'title': 'Rooms'},
+        {'path': 'src/about.php', 'title': 'About'},
+        {'path': 'src/contact-us.php', 'title': 'Contact us'},
+        {'path': 'src/myaccount.php', 'title': 'My Account'},
+    ] %}
+
+    <div class="header-right">
+        {% for page in pages %}
+            <a href="{{ page.path }}"
+                    {% if selected == page.title %}
+                        class="selected"
+                    {% endif %}
+            >{{ page.title }}</a>
+        {% endfor %}
+    </div>
+</header>

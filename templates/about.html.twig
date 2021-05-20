@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'views/head.html.twig' with {'title': 'About'} %}
+
+<body>
+{% include 'views/header.html.twig' with {'selected': 'About'} %}
+<main class="main-container">
+    <h1>About Us</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Architecto, cumque. Ea, tenetur, quod blanditiis
+        eligendi
+        officiis voluptas nihil delectus itaque dicta expedita doloremque rerum. Error beatae eius explicabo rem
+        consequuntur temporibus vitae omnis,
+        quibusdam atque unde voluptatum itaque quis obcaecati incidunt corrupti provident officia sequi reiciendis!
+        Quo
+        et
+        provident ab repellat velit pariatur optio recusandae placeat quis minus eius aperiam aliquid dolorum libero
+        sunt
+        quos non,
+        quod soluta officia. Ipsa pariatur dolor illum maxime, nam non. Sunt vel, rerum officia ipsa quos itaque
+        quam.
+        Blanditiis sapiente, et obcaecati cupiditate similique aperiam dolorem nam maxime dignissimos debitis iusto.
+        Excepturi, error autem.</p>
+    <h1>Our Team</h1>
+
+    {% for creator in creators %}
+        <div class="creator-box">
+            <img class="person-image" src="pictures/{{ creator.imagePath }}" alt="{{ creator.name }}"/>
+            <div>
+                <h2>{{ creator.name }}</h2>
+                <p class="title">{{ creator.role }}</p>
+                <p>{{ creator.description }}</p>
+                <p>{{ creator.email }}</p>
+            </div>
+        </div>
+    {% endfor %}
+</main>
+<div id="progressbar"></div>
+    <div id="scrollPath"></div>
+{{ include('views/footer.html.twig') }}
+</body>
+</html>

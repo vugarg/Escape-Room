@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+
+{% include 'views/head.html.twig' with {'title': 'Book'} %}
+
+<body>
+{% include 'views/header.html.twig' %}
+<main class="main-container">
+    <h3 class="success-message">Congratulations! Your reservation is successfully created!</h3>
+    <p style="margin: 50px 0">You can view and modify your reservations in your <a class="link" href="src/myaccount.php">account page</a></p>
+    <a class="button primary" href="index.php"><span
+                class="fas fa-arrow-left icon"></span>Make more reservations</a>
+<div id="progressbar"></div>
+<div id="scrollPath"></div>
+</main>
+{{ include('views/footer.html.twig') }}
+</body>
+</html>

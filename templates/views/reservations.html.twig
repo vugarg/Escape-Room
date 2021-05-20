@@ -1,0 +1,27 @@
+<table class="reservations-table">
+    <tr>
+        <th>Room</th>
+        <th>Date</th>
+        <th>Time</th>
+        <th>Persons</th>
+    </tr>
+    {% for reservation in reservations %}
+        <tr>
+            <td>{{ reservation.roomName }}</td>
+            <td>{{ reservation.dateFormatted }}</td>
+            <td>{{ reservation.timeFormatted }}</td>
+            <td>{{ reservation.numPersons }}</td>
+            <td>
+                {% if isUpdatable %}
+                    <form action="src/myaccount.php" method="post">
+                        <a href="src/book.php?reservationId={{ reservation.id }}"
+                           class="button secondary small">Change</a>
+                        <button type="submit" class="button secondary small" name="delete" value={{ reservation.id }}>
+                            Delete
+                        </button>
+                    </form>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+</table>
